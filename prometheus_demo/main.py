@@ -34,7 +34,7 @@ async def process_request(request_id):
 
     # Simulate request processing time
     start_time = time.time()
-    await asyncio.sleep(random.uniform(0.1, 1.5))
+    await asyncio.sleep(random.uniform(0.1, 7.5))
     duration = time.time() - start_time
     REQUEST_DURATION.observe(duration)
 
@@ -57,7 +57,7 @@ async def generate_requests():
         num_requests = random.randint(1, 10)
         tasks = [process_request(uuid.uuid4()) for _ in range(num_requests)]
         await asyncio.gather(*tasks)
-        await asyncio.sleep(random.uniform(4.0, 10.0))
+        await asyncio.sleep(random.uniform(1.0, 5.0))
 
 
 def run():
